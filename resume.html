@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <h3 class="desktop-notice">* BEST VIEWED ON DESKTOP *</h3>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P Bharat Chandra - 3D Resume</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.6;
+            color: #000;
+            padding: 40px 0;
+            perspective: 1500px;
+            background: #00000042;
+        }
+
+        .desktop-notice {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 8.5in;
+            margin: 0.5in auto;
+            padding: 0.75in;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.85);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: rotateX(5deg) rotateY(-3deg);
+            /* ✅ tilted by default */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .container:hover {
+            transform: rotateX(0deg) rotateY(0deg);
+            /* ✅ flat on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.95);
+            /* ✅ clearer */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 26pt;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .contact-info {
+            margin-top: 6px;
+            font-size: 11pt;
+        }
+
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        section h2 {
+            font-size: 13pt;
+            font-weight: bold;
+            font-variant: small-caps;
+            letter-spacing: 0.5px;
+            color: #111;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .entry {
+            margin-bottom: 20px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .entry-header strong {
+            font-size: 11pt;
+            font-weight: bold;
+        }
+
+        .entry-header em {
+            font-style: italic;
+            color: #444;
+            font-size: 11pt;
+            white-space: nowrap;
+            padding-left: 15px;
+        }
+
+        /* Dash-style bullets for inner lists */
+        .description,
+        .achievements-list {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style: none;
+            display: block;
+            /* ✅ ensures achievements are visible */
+        }
+
+        .description li,
+        .achievements-list li {
+            margin-bottom: 6px;
+            font-size: 11pt;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .description li::before,
+        .achievements-list li::before {
+            content: "– ";
+            position: absolute;
+            left: 0;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .skills p {
+            margin: 3px 0;
+            font-size: 11pt;
+        }
+
+        body,
+        p,
+        li,
+        div {
+            font-size: 11pt;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>P Bharat Chandra</h1>
+            <div class="contact-info">
+                <a href="mailto:pbharatchandra80@gmail.com">pbharatchandra80@gmail.com</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                +91 9777765428 &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://github.com/pbharatchandra" target="_blank">GitHub: pbharatchandra</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/pbharatchandra/" target="_blank">LinkedIn: P Bharat Chandra</a>
+            </div>
+        </header>
+
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>NIST University, Berhampur, Odisha</strong>
+                        <em>2022 – 2026</em>
+                    </div>
+                    <div>Bachelor of Technology in Information Technology</div>
+                </li>
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>Centurion Higher Secondary School, Chatrapur, Odisha</strong>
+                        <em>2020 – 2022</em>
+                    </div>
+                    <div>Intermediate</div>
+                </li>
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>Carmel Convent School, Chatrapur, Odisha</strong>
+                        <em>2019 – 2020</em>
+                    </div>
+                    <div>Matriculation</div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="technical-skills" class="skills">
+            <h2>Technical Skills</h2>
+            <p><strong>Languages:</strong> Java, Python, C, JS</p>
+            <p><strong>Technologies:</strong> Numpy, Pandas, Jupyter Notebook, Matplotlib, Scikit-learn, OpenCV</p>
+            <p><strong>Soft Skills:</strong> Communication, Teamwork, Leadership, Presentation</p>
+            <p><strong>Hard Skills:</strong> Git, GitHub, Dashboards</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>
+                            <a href="https://github.com/pbharatchandra/HeXyWeB" target="_blank">HeXyWeB</a>
+                        </strong>
+                        <em>Technologies: Python, Tkinter</em>
+                    </div>
+                    <ul class="description">
+                        <li>Developed a simple desktop application for scraping websites.</li>
+                        <li>Implemented user-friendly interface with Tkinter for smooth interaction.</li>
+                        <li>Enabled flexible scraping features tailored for multiple sites.</li>
+                    </ul>
+                </li>
+
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>
+                            <a href="https://github.com/pbharatchandra/hexGPT" target="_blank">hexGPT</a>
+                        </strong>
+                        <em>Technologies: HTML, CSS, JavaScript, Express.js, Python</em>
+                    </div>
+                    <ul class="description">
+                        <li>Created a modern local chatbot UI powered by LM Studio and Express.js.</li>
+                        <li>Implemented sleek sidebar & chat interface with multi-conversation support.</li>
+                        <li>Added inline image upload, dark/light theme toggle, and export features.</li>
+                    </ul>
+                </li>
+
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>
+                            <a href="https://github.com/yourusername/project6" target="_blank">Bakery Website</a>
+                        </strong>
+                        <em>Technologies: Flutter, Firebase, GraphQL</em>
+                    </div>
+                    <ul class="description">
+                        <li>Designed a management website with customer, employee, and admin portals.</li>
+                        <li>Customers can order products, employees manage orders/complaints.</li>
+                        <li>Admin controls product listings, monitors data, and tracks operations visually.</li>
+                    </ul>
+                </li>
+
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>
+                            <a href="https://github.com/yourusername/project1" target="_blank">Kewda Khata App</a>
+                        </strong>
+                        <em>Technologies: Kotlin, Jetpack Compose</em>
+                    </div>
+                    <ul class="description">
+                        <li>Built an app for farmers to analyze daily flower data for future optimization.</li>
+                        <li>Implemented clean UI with Jetpack Compose and modular design.</li>
+                        <li>Enabled real-time insights for farming decisions.</li>
+                    </ul>
+                </li>
+
+                <li class="entry">
+                    <div class="entry-header">
+                        <strong>
+                            <a href="https://github.com/yourusername/project3" target="_blank">Rasa ChatBot</a>
+                        </strong>
+                        <em>Technologies: Rasa Framework, HTML, CSS, JavaScript</em>
+                    </div>
+                    <ul class="description">
+                        <li>Developed a chatbot using the Rasa conversational AI framework.</li>
+                        <li>Implemented natural conversation flows to improve user engagement.</li>
+                        <li>Explored Rasa’s capability as a replacement for traditional SLM/LLM-based bots.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="achievements">
+            <h2>Achievements/Certifications</h2>
+            <ul class="achievements-list">
+                <li>Experienced Counsellor in NCS Club at NIST University</li>
+                <li>Core Java from Central Room Training Center, Bhubaneswar</li>
+                <li>Demystifying Networking Certification from National Programme on Technology Enhanced Learning
+                    (NPTEL)</li>
+                <li>Introduction to Cybersecurity Awareness from HP LIFE Platform</li>
+                <li>Full Stack WEb Development From Vizag Steel Plant</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+
+</html>
