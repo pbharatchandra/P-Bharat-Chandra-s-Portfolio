@@ -4,545 +4,1158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P Bharat Chandra's Portfolio</title>
-    <script src="js/script1.js"></script>
-    <script src="JS/widget.js"></script>
-    <link href="css/css1.css" rel="stylesheet">
-    <script src="js/script2.js"></script>
-    <script src="js/script3.js"></script>
-    <script src="js/script4.js"></script>
-    <script src="js/script5.js"></script>
-    <script src="js/script6.js"></script>
-    <script src="js/script7.js"></script>
+    <meta name="description"
+        content="P Bharat Chandra - Full Stack Developer Portfolio. Specializing in React, Python, Flask, and AI-powered applications.">
+    <title>P Bharat Chandra | Full Stack Developer Portfolio</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- Devicon CSS — skill & tool logos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <!-- ===================== Custom Styles ===================== -->
     <style>
-        .hero-section {
-            height: 100vh;
-            position: relative;
+        * {
+            font-family: 'Inter', sans-serif;
         }
 
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        html {
+            scroll-behavior: smooth;
         }
 
-        @keyframes floating {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
+        /* ---------- Gradient helpers ---------- */
         .gradient-text {
-            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            background: linear-gradient(135deg, #6366f1, #ec4899);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+        }
+
+        /* ---------- Animations ---------- */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ---------- Card hover ---------- */
+        .card-hover {
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
         .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, .15);
+        }
+
+        /* ---------- Skill card hover ---------- */
+        .skill-card {
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, .2);
+            border-color: #6366f1;
+        }
+
+        /* ---------- Education Timeline ---------- */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: .5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #6366f1, #ec4899);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: .25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            border: 3px solid #1f2937;
+            z-index: 1;
+        }
+
+        /* ---------- Nav underline animation ---------- */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            transition: width .3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ---------- Scrollbar ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+
+        /* ---------- Mobile slide-in menu ---------- */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #111827 !important;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* ---------- Hero section ---------- */
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding-top: 5.5rem;
+                padding-bottom: 3rem;
+            }
+
+            .floating {
+                animation: floating-mobile 4s ease-in-out infinite;
+            }
+
+            @keyframes floating-mobile {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-6px);
+                }
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-white overflow-x-hidden">
+<!-- =====================================================================
+     BODY
+     ===================================================================== -->
 
-    <!-- RASA BOT TESTTTT -->
-<div id="rasa-chat-widget" data-websocket-url="https://portfoliochat-production.up.railway.app"></div>
-<script src="./js/widget.js" type="application/javascript"></script>
+<body class="bg-gray-900 text-white overflow-x-hidden font-inter">
 
-    
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg">
+    <!-- ======================== RASA CHAT WIDGET ======================== -->
+    <div id="rasa-chat-widget" data-websocket-url="https://portfoliochat-production.up.railway.app"></div>
+
+    <!-- Backdrop overlay for mobile menu -->
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[60] md:hidden transition-opacity"></div>
+
+    <!-- Mobile slide-in menu (outside nav to prevent backdrop-filter containment & transparency) -->
+    <div id="mobile-menu"
+        class="mobile-menu fixed top-0 right-0 w-72 max-w-[80vw] h-full bg-gray-900 border-l border-gray-800 z-[70] shadow-2xl md:hidden flex flex-col justify-between">
+        <div>
+            <div class="flex items-center justify-between p-5 border-b border-gray-800">
+                <span class="text-base font-bold gradient-text">P Bharat Chandra</span>
+                <button id="mobile-menu-close"
+                    class="p-2 rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition"
+                    aria-label="Close navigation menu">
+                    <i data-feather="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="flex flex-col px-6 py-6 space-y-4">
+                <a href="#home"
+                    class="mobile-nav-link text-base font-medium text-gray-200 hover:text-indigo-400 transition flex items-center gap-3">
+                    <i data-feather="home" class="w-4 h-4 text-indigo-400"></i> Home
+                </a>
+                <a href="#about"
+                    class="mobile-nav-link text-base font-medium text-gray-200 hover:text-indigo-400 transition flex items-center gap-3">
+                    <i data-feather="user" class="w-4 h-4 text-indigo-400"></i> About Me
+                </a>
+                <a href="#skills"
+                    class="mobile-nav-link text-base font-medium text-gray-200 hover:text-indigo-400 transition flex items-center gap-3">
+                    <i data-feather="code" class="w-4 h-4 text-indigo-400"></i> Skills
+                </a>
+                <a href="#projects"
+                    class="mobile-nav-link text-base font-medium text-gray-200 hover:text-indigo-400 transition flex items-center gap-3">
+                    <i data-feather="briefcase" class="w-4 h-4 text-indigo-400"></i> Projects
+                </a>
+                <a href="#contact"
+                    class="mobile-nav-link text-base font-medium text-gray-200 hover:text-indigo-400 transition flex items-center gap-3">
+                    <i data-feather="mail" class="w-4 h-4 text-indigo-400"></i> Contact
+                </a>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-800">
+            <a href="https://drive.google.com/file/d/1zIpioRHi-99aOIn8RRCK04dF2MpFZo5f/view?usp=drive_link"
+                target="_blank" rel="noopener noreferrer"
+                class="block w-full py-3 text-center gradient-bg rounded-xl text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 hover:opacity-90 transition">
+                Resume
+            </a>
+        </div>
+    </div>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav id="navbar" class="fixed w-full z-50 bg-gray-900 md:bg-gray-900/80 md:backdrop-blur-lg border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-2xl font-bold gradient-text">P Bharat Chandra's Portfolio</span>
+                <!-- Logo / Brand -->
+                <a href="#home" class="text-xl font-bold gradient-text whitespace-nowrap">P Bharat Chandra</a>
+
+                <!-- Desktop nav links -->
+                <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#home"
+                        class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Home</a>
+                    <a href="#about"
+                        class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">About
+                        Me</a>
+                    <a href="#skills"
+                        class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Skills</a>
+                    <a href="#projects"
+                        class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Projects</a>
+                    <a href="#contact"
+                        class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Contact</a>
+                    <!-- Resume — opens Google Drive link in new tab -->
+                    <!-- TODO: Replace YOUR_GOOGLE_DRIVE_LINK_HERE with your actual Google Drive resume link -->
+                    <a href="https://drive.google.com/file/d/1zIpioRHi-99aOIn8RRCK04dF2MpFZo5f/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer"
+                        class="ml-2 px-4 py-2 gradient-bg rounded-full text-sm font-semibold hover:opacity-90 transition">Resume</a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home"
-                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Home</a>
-                        <a href="#about"
-                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">About</a>
-                        <a href="#work"
-                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Work</a>
-                        <a href="#contact"
-                            class="px-3 py-2 rounded-md text-sm font-medium hover:text-indigo-400 transition">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button class="mobile-menu-button p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
+
+                <!-- Mobile hamburger button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-2 rounded-lg bg-gray-800/90 text-gray-200 hover:text-white hover:bg-gray-700 border border-gray-700/80 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm"
+                    aria-label="Open navigation menu">
+                    <i data-feather="menu" class="w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section with 3D Globe -->
+    <!-- ======================== HOME SECTION ======================== -->
     <section id="home" class="hero-section flex items-center justify-center">
-        <div id="vanta-globe" class="absolute inset-0 w-full h-full"></div>
+        <!-- Vanta.js animated background -->
+        <div id="vanta-bg" class="absolute inset-0 w-full h-full pointer-events-none"></div>
+
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col items-center text-center" data-aos="fade-up">
-                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-indigo-500 mb-6 floating">
-                    <img src="assests/profile_dp.jpg" alt="Profile" class="w-full h-full object-cover">
+                <!-- Profile Photo -->
+                <div
+                    class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-indigo-500 mb-6 floating shadow-xl shadow-indigo-500/25 bg-gray-900 relative z-10 flex-shrink-0">
+                    <img src="assests/profile_dp.jpg" alt="P Bharat Chandra - Full Stack Developer"
+                        class="w-full h-full object-cover">
                 </div>
-                <h1 class="text-5xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">P Bharat
-                        Chandra</span></h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8">Creative Developer &  AI/ML Engineer</p>
-                <div class="flex space-x-4">
-                    <a href="#work"
-                        class="px-8 py-3 bg-indigo-600 rounded-full font-medium hover:bg-indigo-700 transition">View
-                        Work</a>
+
+                <!-- Name & Title -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">
+                    Hi, I'm <span class="gradient-text">P Bharat Chandra</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-indigo-300 font-medium mb-4">Full Stack Developer</p>
+
+                <!-- Formal introduction — 2-3 lines -->
+                <p class="text-base md:text-lg text-gray-300 max-w-2xl mb-8 leading-relaxed">
+                    A passionate Full Stack Developer with <strong class="text-white">600+ hours</strong> of hands-on
+                    coding experience. I specialize in building responsive interfaces, reliable backend services, and
+                    AI-powered applications using React, Python, Flask, and modern web technologies.
+                </p>
+
+                <!-- Resume Buttons — on the Home section as required -->
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <!-- TODO: Replace YOUR_GOOGLE_DRIVE_LINK_HERE with your actual Google Drive resume link -->
+                    <a href="https://drive.google.com/file/d/1zIpioRHi-99aOIn8RRCK04dF2MpFZo5f/view?usp=drive_link"
+                        target="_blank" rel="noopener noreferrer"
+                        class="px-8 py-3 gradient-bg rounded-full font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                        <i data-feather="eye" class="w-5 h-5"></i> View Resume
+                    </a>
+                    <!-- TODO: Add your resume PDF file as assests/resume.pdf -->
+                    <a href="resume/P_BHARAT_CHANDRA_RESUME.pdf" download="P_Bharat_Chandra_Resume.pdf"
+                        class="px-8 py-3 border-2 border-indigo-500 rounded-full font-semibold hover:bg-indigo-500/20 transition inline-flex items-center justify-center gap-2">
+                        <i data-feather="download" class="w-5 h-5"></i> Download Resume
+                    </a>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="#projects"
+                        class="px-7 py-2.5 bg-gray-800 border border-gray-700 rounded-full font-medium hover:border-indigo-500 transition inline-flex items-center justify-center gap-2">
+                        <i data-feather="briefcase" class="w-4 h-4"></i> View Work
+                    </a>
                     <a href="#contact"
-                        class="px-8 py-3 border border-indigo-500 rounded-full font-medium hover:bg-indigo-900 transition">Contact
-                        Me</a>
+                        class="px-7 py-2.5 bg-gray-800 border border-gray-700 rounded-full font-medium hover:border-pink-500 transition inline-flex items-center justify-center gap-2">
+                        <i data-feather="send" class="w-4 h-4"></i> Contact Me
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ======================== ABOUT ME SECTION ======================== -->
     <section id="about" class="py-20 bg-gray-800">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">About <span
-                    class="gradient-text">Me</span></h2>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
-                    <div class="relative">
-                        <div class="w-full h-96 bg-indigo-900 rounded-xl overflow-hidden">
-                            <img src="assests/whoami.jpg" alt="About"
-                                class="w-full h-full object-cover">http://static.photos/office/640x360/42
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">
+                About <span class="gradient-text">Me</span>
+            </h2>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                <!-- Left — Bio -->
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="relative mb-8">
+                        <div class="w-full h-72 md:h-96 bg-indigo-900/30 rounded-xl overflow-hidden">
+                            <img src="assests/whoami.jpg" alt="About P Bharat Chandra"
+                                class="w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-600 rounded-xl flex items-center justify-center">
-                            <i data-feather="award" class="w-16 h-16"></i>
+                            class="absolute -bottom-5 -right-5 w-28 h-28 gradient-bg rounded-xl flex items-center justify-center shadow-lg">
+                            <i data-feather="award" class="w-14 h-14"></i>
                         </div>
                     </div>
-                </div>
-                <div class="md:w-1/2 md:pl-16" data-aos="fade-left">
+
                     <h3 class="text-2xl font-bold mb-4">Who am I?</h3>
-                    <p class="text-gray-300 mb-6">I'm A Passionate Developer And Engineer With Proven Experience In
-                        Creating Impactful Digital Experiences With Cutting-Edge Technologies. I Specialize In AI/ML
-                        Models, Back-end Development, And Building Intuitive AI-Powered Tools. I Am Always Seeking New
-                        Opportunities To Apply My Skills, Drive Success, And Contribute To Innovative Projects</p>
-                    <div class="mb-8">
-                        <div class="flex items-center mb-2">
-                            <span class="w-32 font-medium">Web-Dev</span>
-                            <div class="flex-1 bg-gray-700 rounded-full h-2">
-                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 85%"></div>
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm a Software Engineering student passionate about creating impactful digital experiences. With
+                        proficiency in HTML, CSS, JavaScript, Python, Flask, SQL, and React, I've solved
+                        <strong class="text-white">150+ DSA problems</strong> and built multiple projects involving
+                        AI-powered applications and web scraping. I focus on developing responsive interfaces, reliable
+                        backend services, and practical software solutions. Currently seeking a Full Stack Developer
+                        role.
+                    </p>
+                </div>
+
+                <!-- Right — Education Timeline -->
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+                        <i data-feather="book-open" class="w-6 h-6 text-indigo-400"></i>
+                        Education
+                    </h3>
+
+                    <div class="timeline">
+                        <!-- Most recent first -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-gray-900/50 rounded-lg p-5 border border-gray-700">
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                                    <h4 class="font-bold text-lg text-white">Nxtwave Intensive</h4>
+                                    <span class="text-sm text-indigo-400 font-medium mt-1 sm:mt-0 whitespace-nowrap">May
+                                        2026 – Dec 2027</span>
+                                </div>
+                                <p class="text-gray-300">Python Full Stack Program</p>
+                                <p class="text-sm text-gray-500">Hyderabad</p>
                             </div>
                         </div>
-                        <div class="flex items-center mb-2">
-                            <span class="w-32 font-medium">Ai/ML</span>
-                            <div class="flex-1 bg-gray-700 rounded-full h-2">
-                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 75%"></div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-gray-900/50 rounded-lg p-5 border border-gray-700">
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                                    <h4 class="font-bold text-lg text-white">NIST University</h4>
+                                    <span
+                                        class="text-sm text-indigo-400 font-medium mt-1 sm:mt-0 whitespace-nowrap">2022
+                                        – 2026</span>
+                                </div>
+                                <p class="text-gray-300">B.Tech in Information Technology</p>
+                                <p class="text-sm text-gray-500">Berhampur, Odisha · CGPA: 7.54 / 10</p>
                             </div>
                         </div>
-                        <div class="flex items-center mb-2">
-                            <span class="w-32 font-medium">AI Tools</span>
-                            <div class="flex-1 bg-gray-700 rounded-full h-2">
-                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 85%"></div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-gray-900/50 rounded-lg p-5 border border-gray-700">
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
+                                    <h4 class="font-bold text-lg text-white">Centurion Residential HS School</h4>
+                                    <span
+                                        class="text-sm text-indigo-400 font-medium mt-1 sm:mt-0 whitespace-nowrap">2020
+                                        – 2022</span>
+                                </div>
+                                <p class="text-gray-300">Intermediate (12th), MPC</p>
+                                <p class="text-sm text-gray-500">Chatrapur, Odisha · 70%</p>
                             </div>
                         </div>
-                        <div class="flex items-center mb-2">
-                            <span class="w-32 font-medium">Automation</span>
-                            <div class="flex-1 bg-gray-700 rounded-full h-2">
-                                <div class="bg-indigo-500 h-2 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="resume.html"
-                            class="px-6 py-2 bg-gray-700 rounded-full font-medium hover:bg-gray-600 transition flex items-center">
-                            <i data-feather="download" class="mr-2">aaaaaaaa.html</i> View 3D CV
-                        </a>
-                        <a href="https://github.com/pbharatchandra/"
-                            class="px-6 py-2 border border-gray-600 rounded-full font-medium hover:bg-gray-700 transition flex items-center">
-                            <i data-feather="github" class="mr-2"></i> GitHub
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="py-20 bg-gray-900">
+    <!-- ======================== SKILLS & TOOLS SECTION ======================== -->
+    <section id="skills" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">My <span
-                    class="gradient-text">Work</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 4 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" data-aos-delay="300"
-                    onclick="window.open('https://github.com/pbharatchandra/HeXyWeB', '_blank')">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">
+                Skills & <span class="gradient-text">Tools</span>
+            </h2>
+            <p class="text-gray-400 text-center mb-14 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Technologies I work with to build modern, scalable, and AI-powered applications.
+            </p>
+
+            <!-- Tech Skills -->
+            <div class="mb-14" data-aos="fade-up" data-aos-delay="150">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-feather="code" class="w-5 h-5 text-indigo-400"></i> Tech Skills
+                </h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <!-- JavaScript -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-javascript-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">JavaScript</span>
+                    </div>
+                    <!-- Python -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-python-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Python</span>
+                    </div>
+                    <!-- HTML5 -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-html5-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">HTML5</span>
+                    </div>
+                    <!-- CSS3 -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-css3-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">CSS3</span>
+                    </div>
+                    <!-- React -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-react-original colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">React</span>
+                    </div>
+                    <!-- Tailwind CSS -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-tailwindcss-original colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Tailwind CSS</span>
+                    </div>
+                    <!-- Flask -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-flask-original text-4xl mb-2" style="color:#ffffff;"></i>
+                        <span class="text-sm text-gray-300">Flask</span>
+                    </div>
+                    <!-- SQL / MySQL -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-mysql-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">MySQL</span>
+                    </div>
+                    <!-- PostgreSQL -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-postgresql-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-feather="tool" class="w-5 h-5 text-pink-400"></i> Tools
+                </h3>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <!-- Git -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-git-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Git</span>
+                    </div>
+                    <!-- GitHub -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-github-original text-4xl mb-2" style="color:#ffffff;"></i>
+                        <span class="text-sm text-gray-300">GitHub</span>
+                    </div>
+                    <!-- VS Code -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-vscode-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">VS Code</span>
+                    </div>
+                    <!-- Postman -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-postman-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Postman</span>
+                    </div>
+                    <!-- Docker -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-docker-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Docker</span>
+                    </div>
+                    <!-- Netlify -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <i class="devicon-netlify-plain colored text-4xl mb-2"></i>
+                        <span class="text-sm text-gray-300">Netlify</span>
+                    </div>
+                    <!-- Render -->
+                    <div
+                        class="skill-card flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl border border-gray-700">
+                        <svg class="w-10 h-10 mb-2" viewBox="0 0 24 24" fill="none">
+                            <rect width="24" height="24" rx="4" fill="#46E3B7" />
+                            <path d="M7 7h4v4H7V7zm0 6h4v4H7v-4zm6-6h4v4h-4V7zm6 0h4v4h-4V7z" fill="#fff"
+                                transform="scale(0.7) translate(4,4)" />
+                        </svg>
+                        <span class="text-sm text-gray-300">Render</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== PROJECTS SECTION ======================== -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">
+                My <span class="gradient-text">Projects</span>
+            </h2>
+            <p class="text-gray-400 text-center mb-14 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                A selection of projects I've built — from AI chatbots to full-stack web apps.
+            </p>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+
+                <!-- ===== PROJECT 1 — Rasa AI Chatbot ===== -->
+                <div class="project-card bg-gray-900 rounded-xl overflow-hidden card-hover border border-gray-700"
+                    data-aos="zoom-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="assests/hexyweb.jpg" alt="Project 4" class="w-full h-full object-cover">
+                        <img src="assests/rasabot.png" alt="Rasa AI Chatbot"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">HeXyWeB</h3>
-                        <p class="text-gray-300 mb-4">A Simple Desktop Application For Scraping Websites, bBuilt With
-                            Python and Tkinter.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Python</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Tkinter</span>
+                        <h3 class="text-xl font-bold mb-2">Rasa AI Chatbot</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            An AI-powered chatbot platform deployed on the cloud. Integrated a local LLM and RAG for
+                            generative fallbacks, eliminating external API dependencies. Features an automated
+                            continuous
+                            learning pipeline that logs and auto-trains on unhandled queries.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">React</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Rasa</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Docker</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Flask</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/pbharatchandra/RASA_BOT" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm font-medium hover:border-indigo-500 hover:text-indigo-400 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <!-- TODO: Replace with actual deployment or video link -->
+                            <a href="YOUR_RASA_DEPLOY_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 gradient-bg rounded-lg text-sm font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 5 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" data-aos-delay="400"
-                    onclick="window.open('https://github.com/pbharatchandra/hexGPT', '_blank')">
+                <!-- ===== PROJECT 2 — hexGPT ===== -->
+                <div class="project-card bg-gray-900 rounded-xl overflow-hidden card-hover border border-gray-700"
+                    data-aos="zoom-in" data-aos-delay="100">
                     <div class="h-48 overflow-hidden">
-                        <img src="assests/rasachatbot.jpg" alt="Project 5" class="w-full h-full object-cover">
+                        <img src="assests/rasachatbot.jpg" alt="hexGPT - Local AI Developer Tool"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">hexGPT</h3>
-                        <p class="text-gray-300 mb-4">A modern local chatbot UI powered by LM Studio and Express.js,
-                            featuring:
-
-                            🖥️ Sleek sidebar & chat interface
-                            💬 Multi-conversation support
-                            📎 Inline image uploads
-                            🌗 Dark/light theme toggle
-                            🧹 Conversation clearing & export</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Html Css</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Javascript</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Python</span>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A modern local AI chatbot platform enabling private, offline inference using LLMs via LM
+                            Studio. Features multi-session conversations, inline image uploads, chat export, dark/light
+                            theme toggle, and fully responsive layouts.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">React</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Flask</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">JavaScript</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/pbharatchandra/hexGPT" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm font-medium hover:border-indigo-500 hover:text-indigo-400 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <!-- TODO: Replace with actual deployment or video link -->
+                            <a href="YOUR_HEXGPT_DEPLOY_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 gradient-bg rounded-lg text-sm font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 6 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" data-aos-delay="500"
-                    onclick="window.open('https://github.com/yourusername/project6', '_blank')">
+                <!-- ===== PROJECT 3 — HeXyWeB ===== -->
+                <div class="project-card bg-gray-900 rounded-xl overflow-hidden card-hover border border-gray-700"
+                    data-aos="zoom-in" data-aos-delay="200">
                     <div class="h-48 overflow-hidden">
-                        <img src="assests/bakery.jpg" alt="Project 6"
-                            class="w-full h-full object-cover">
+                        <img src="assests/hexyweb.jpg" alt="HeXyWeB - Web Scraping Tool"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">HeXyWeB</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A desktop-based web scraping application built with Python and Tkinter. Features a clean,
+                            user-friendly GUI with multi-site scraping logic, configurable input parameters, and
+                            modular,
+                            testable code architecture.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Python</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Tkinter</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://github.com/pbharatchandra/HeXyWeB" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm font-medium hover:border-indigo-500 hover:text-indigo-400 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <!-- TODO: Replace with actual deployment or video link -->
+                            <a href="YOUR_HEXYWEB_DEPLOY_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 gradient-bg rounded-lg text-sm font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PROJECT 4 — Bakery Website (hidden initially) ===== -->
+                <div class="project-card hidden-project bg-gray-900 rounded-xl overflow-hidden card-hover border border-gray-700 hidden"
+                    data-aos="zoom-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assests/bakery.jpg" alt="Bakery Management Website"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Bakery Website</h3>
-                        <p class="text-gray-300 mb-4">Bakery Management Website with portals for customers, employees,
-                            and admin. Customers order products, employees manage orders and complaints, while the admin
-                            controls listings, tracks data, and monitors operations with visual insights for efficient,
-                            customer-friendly bakery management.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Flutter</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Firebase</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">GraphQL</span>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A bakery management platform with dedicated portals for customers, employees, and admin.
+                            Customers order products, employees manage orders and complaints, while the admin controls
+                            listings and monitors operations with visual insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Flutter</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Firebase</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">GraphQL</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <!-- TODO: Replace with correct GitHub URL -->
+                            <a href="YOUR_BAKERY_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm font-medium hover:border-indigo-500 hover:text-indigo-400 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <!-- TODO: Replace with actual deployment or video link -->
+                            <a href="YOUR_BAKERY_DEPLOY_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 gradient-bg rounded-lg text-sm font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
                         </div>
                     </div>
                 </div>
-                <!-- Project 1 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" onclick="window.open('https://github.com/yourusername/project1', '_blank')">
+
+                <!-- ===== PROJECT 5 — Kewda Khata App (hidden initially) ===== -->
+                <div class="project-card hidden-project bg-gray-900 rounded-xl overflow-hidden card-hover border border-gray-700 hidden"
+                    data-aos="zoom-in">
                     <div class="h-48 overflow-hidden">
-                        <img src="assests/image_kewda.png" alt="Project 1" class="w-full h-full object-cover">
+                        <img src="assests/image_kewda.png" alt="Kewda Khata App"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Kewda Khata App</h3>
-                        <p class="text-gray-300 mb-4">An App For Farmers, To Check Daily Analysis Of Flowers For Future
-                            Optimization In Farming
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A mobile app for farmers to check daily analysis of flowers for future optimization in
+                            farming. Built with Kotlin and Jetpack Compose for a clean, modern UI with real-time
+                            insights for farming decisions.
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Kotlin</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">JetPack Compose</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Kotlin</span>
+                            <span class="px-3 py-1 bg-indigo-900/60 rounded-full text-xs font-medium">Jetpack
+                                Compose</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <!-- <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" data-aos-delay="100"
-                    onclick="window.open('https://github.com/yourusername/project2', '_blank')">
-                    <div class="h-48 overflow-hidden">
-                        <img src="http://static.photos/minimal/640x360/2" alt="Project 2"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-300 mb-4">A complete shopping experience with AR product preview.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Vue.js</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Node.js</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">WebGL</span>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Project 3 -->
-                <div class="bg-gray-800 rounded-xl overflow-hidden transition duration-300 card-hover"
-                    data-aos="zoom-in" data-aos-delay="200"
-                    onclick="window.open('https://github.com/yourusername/project3', '_blank')">
-                    <div class="h-48 overflow-hidden">
-                        <img src="assests/rasabot.png" alt="Project 3" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Rasa ChatBot</h3>
-                        <p class="text-gray-300 mb-4">A Chatbot Using Rasa Conversational Ai, An OpenSource Framwork
-                            Which Changes The Process of Making Chatbots And Have A Capability Of Replacing Tradtional
-                            Chatbots Made Using SLM's ANd LLM's </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Rasa Framework</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Html Css</span>
-                            <span class="px-3 py-1 bg-indigo-900 rounded-full text-xs">Javascript</span>
+                        <div class="flex gap-3">
+                            <!-- TODO: Replace with correct GitHub URL -->
+                            <a href="YOUR_KEWDA_GITHUB_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm font-medium hover:border-indigo-500 hover:text-indigo-400 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <!-- TODO: Replace with actual deployment or video link -->
+                            <a href="YOUR_KEWDA_DEPLOY_LINK_HERE" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 gradient-bg rounded-lg text-sm font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                                <i data-feather="external-link" class="w-4 h-4"></i> Live Demo
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-12">
-                <a href="https://github.com/pbharatchandra"
-                    class="px-8 py-3 border border-indigo-500 rounded-full font-medium hover:bg-indigo-900 transition inline-flex items-center">
-                    View All Projects <i data-feather="arrow-right" class="ml-2"></i>
-                </a>
+
+            <!-- View More / Show Less Button -->
+            <div class="text-center mt-10">
+                <button id="view-more-btn" onclick="toggleProjects()"
+                    class="px-8 py-3 border-2 border-indigo-500 rounded-full font-semibold hover:bg-indigo-500/20 transition inline-flex items-center gap-2">
+                    <span id="view-more-text">View More Projects</span>
+                    <i data-feather="chevron-down" class="w-5 h-5" id="view-more-icon"></i>
+                </button>
+            </div>
+
+            <!-- ---- GitHub Stats ---- -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold text-center mb-10" data-aos="fade-up">
+                    GitHub <span class="gradient-text">Stats</span>
+                </h3>
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-6" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <img src="https://github-stats-extended.vercel.app/api?username=pbharatchandra&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000"
+                        alt="GitHub Stats" loading="lazy" class="w-full max-w-md rounded-lg">
+                    <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=pbharatchandra&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000"
+                        alt="Top Languages" loading="lazy" class="w-full max-w-md rounded-lg">
+                </div>
+                <div class="flex justify-center mt-6" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://streak-stats.demolab.com/?user=pbharatchandra&theme=tokyonight&hide_border=true&background=00000000"
+                        alt="GitHub Streak" loading="lazy" class="w-full max-w-lg rounded-lg">
+                </div>
+            </div>
+
+            <!-- ---- GitHub Calendar ---- -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center mb-10" data-aos="fade-up">
+                    GitHub <span class="gradient-text">Calendar</span>
+                </h3>
+                <div class="bg-gray-900/50 rounded-xl p-4 md:p-6 border border-gray-700 overflow-x-auto"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://ghchart.rshah.org/6366f1/pbharatchandra"
+                        alt="P Bharat Chandra's GitHub Contribution Calendar" class="w-full min-w-[700px]">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-800">
+    <!-- ======================== CONTACT SECTION ======================== -->
+    <section id="contact" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">Get In <span
-                    class="gradient-text">Touch</span></h2>
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+            <p class="text-gray-400 text-center mb-14 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                I'm currently available for freelance work and full-time roles. Let's build something great together.
+            </p>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Left — Contact Info -->
+                <div class="lg:w-1/2" data-aos="fade-right">
                     <h3 class="text-2xl font-bold mb-6">Let's talk about your project</h3>
-                    <p class="text-gray-300 mb-8">I'm currently available for freelance work. If you have a project that
-                        you want to get started, think you need my help with something or just fancy saying hey, then
-                        get in touch.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4"><i
-                                    data-feather="mail"></i></div>
-                            <span>pbharatchandra80@gmail.com</span>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        I'm currently available for freelance work. If you have a project that you want to get started,
+                        think you need my help with something or just fancy saying hey, then get in touch.
+                    </p>
+
+                    <!-- Contact details -->
+                    <div class="space-y-5 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-11 h-11 rounded-full bg-indigo-900/60 flex items-center justify-center flex-shrink-0">
+                                <i data-feather="mail" class="w-5 h-5 text-indigo-400"></i>
+                            </div>
+                            <a href="mailto:pbharatchandraofficial@gmail.com"
+                                class="text-gray-300 hover:text-indigo-400 transition break-all">
+                                pbharatchandraofficial@gmail.com
+                            </a>
                         </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4"><i
-                                    data-feather="phone"></i></div>
-                            <span>+91 9777765428</span>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-11 h-11 rounded-full bg-indigo-900/60 flex items-center justify-center flex-shrink-0">
+                                <i data-feather="phone" class="w-5 h-5 text-indigo-400"></i>
+                            </div>
+                            <span class="text-gray-300">+91 9777765428</span>
                         </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-indigo-900 flex items-center justify-center mr-4"><i
-                                    data-feather="map-pin"></i></div>
-                            <span>Berhampur, Odisha</span>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-11 h-11 rounded-full bg-indigo-900/60 flex items-center justify-center flex-shrink-0">
+                                <i data-feather="map-pin" class="w-5 h-5 text-indigo-400"></i>
+                            </div>
+                            <a href="https://maps.google.com/?q=Berhampur,+Odisha" target="_blank"
+                                rel="noopener noreferrer" class="text-gray-300 hover:text-indigo-400 transition"
+                                title="Open in Google Maps">
+                                Berhampur, Odisha
+                            </a>
                         </div>
                     </div>
-                    <div class="flex space-x-4 mt-8">
-                        <a href="https://www.linkedin.com/in/pbharatchandraofficial/ target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i data-feather="linkedin"></i>
+
+                    <!-- Social Links -->
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.linkedin.com/in/pbharatchandraofficial/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-11 h-11 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition"
+                            title="LinkedIn">
+                            <i data-feather="linkedin" class="w-5 h-5"></i>
                         </a>
-                        <a href="https://github.com/pbharatchandra" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i data-feather="github"></i>
+                        <a href="https://github.com/pbharatchandra" target="_blank" rel="noopener noreferrer"
+                            class="w-11 h-11 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition"
+                            title="GitHub">
+                            <i data-feather="github" class="w-5 h-5"></i>
                         </a>
+                        <a href="https://www.youtube.com/@CodeWith-Bharat" target="_blank" rel="noopener noreferrer"
+                            class="w-11 h-11 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-red-600 hover:border-red-600 transition"
+                            title="YouTube">
+                            <i data-feather="youtube" class="w-5 h-5"></i>
                         </a>
-                        <a href="https://www.youtube.com/@CodeWith-Bharat" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i data-feather="youtube"></i>
-                        </a>
-                        <a href="https://www.instagram.com/p_bharat28/" target="_blank"
-                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i data-feather="instagram"></i>
+                        <a href="https://www.instagram.com/p_bharat28/" target="_blank" rel="noopener noreferrer"
+                            class="w-11 h-11 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 transition"
+                            title="Instagram">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
-                <div class="md:w-1/2 md:pl-16" data-aos="fade-left">
-                    <form id="contactForm" class="space-y-6"
-                        action="https://script.google.com/macros/s/AKfycbwuJeTv0p3kxr0T9ul-miz6XZ139UOXTLKGOVxi_A_LXmK31gyG5PpFcuP_00-w2MhC/exec"
-                        method="POST">
+
+                <!-- Right — Contact Form -->
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <form id="contactForm" action="https://formsubmit.co/ajax/pbharatchandraofficial@gmail.com"
+                        method="POST" data-netlify="true" name="contact" class="space-y-5">
+
+                        <!-- Anti-spam honeypot -->
+                        <input type="text" name="_honey" style="display:none">
+
                         <div>
-                            <label for="name" class="block mb-2 font-medium">Your Name</label>
-                            <input type="text" id="name" name="name"
-                                class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required>
+                            <label for="name" class="block mb-2 text-sm font-medium">Your Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                placeholder="John Doe">
                         </div>
                         <div>
-                            <label for="email" class="block mb-2 font-medium">Email Address</label>
-                            <input type="email" id="email" name="email"
-                                class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required>
+                            <label for="email" class="block mb-2 text-sm font-medium">Email Address</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                placeholder="john@example.com">
                         </div>
                         <div>
-                            <label for="subject" class="block mb-2 font-medium">Subject</label>
-                            <input type="text" id="subject" name="subject"
-                                class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required>
+                            <label for="subject" class="block mb-2 text-sm font-medium">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                                placeholder="Project inquiry">
                         </div>
                         <div>
-                            <label for="message" class="block mb-2 font-medium">Message</label>
-                            <textarea id="message" name="message" rows="5"
-                                class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required></textarea>
+                            <label for="message" class="block mb-2 text-sm font-medium">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none"
+                                placeholder="Your message..."></textarea>
                         </div>
-                        <button type="submit"
-                            class="w-full px-6 py-3 bg-indigo-600 rounded-lg font-medium hover:bg-indigo-700 transition">Send
-                            Message</button>
-                        <div id="form-status" class="mt-4 text-center"></div>
+                        <button type="submit" id="submit-btn"
+                            class="w-full px-6 py-3 gradient-bg rounded-lg font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2">
+                            <i data-feather="send" class="w-5 h-5"></i> Send Message
+                        </button>
+                        <div id="form-status" class="mt-3 text-center text-sm"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 bg-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="https://www.linkedin.com/in/pbharatchandraofficial/" class="text-gray-400 hover:text-white">
-                    <i data-feather="linkedin"></i>
-                </a>
-                <a href="https://github.com/pbharatchandra" class="text-gray-400 hover:text-white">
-                    <i data-feather="github"></i>
-                </a>
-                <a href="https://www.youtube.com/@CodeWith-Bharat" class="text-gray-400 hover:text-white">
-                    <i data-feather="youtube"></i>
-                </a>
-                <a href="https://www.instagram.com/p_bharat28/" class="text-gray-400 hover:text-white">
-                    <i data-feather="instagram"></i>
-                </a>
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="py-8 bg-gray-800 border-t border-gray-700">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-gray-400 text-sm">&copy; 2026 P Bharat Chandra. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/pbharatchandraofficial/" target="_blank"
+                        rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition">
+                        <i data-feather="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://github.com/pbharatchandra" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-indigo-400 transition">
+                        <i data-feather="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@CodeWith-Bharat" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-red-400 transition">
+                        <i data-feather="youtube" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.instagram.com/p_bharat28/" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-pink-400 transition">
+                        <i data-feather="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
             </div>
-            <p class="text-gray-400">© 2026  All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- =====================================================================
+         SCRIPTS
+         ===================================================================== -->
+
+    <!-- Three.js (required by Vanta) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js — NET effect (desktop) -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <!-- Vanta.js — WAVES effect (mobile) -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Rasa Chat Widget -->
+    <script src="./js/widget.js" type="application/javascript"></script>
+
     <script>
-        // Initialize Vanta.js NET + WAVES combo
+        // ==================== Vanta.js Background ====================
         let vantaEffect;
         let isMobile = window.innerWidth < 768;
 
         function initVanta() {
             if (vantaEffect) vantaEffect.destroy();
-
-            if (isMobile) {
-                vantaEffect = VANTA.WAVES({
-                    el: "#vanta-globe",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x4f46e5,
-                    shininess: 50,
-                    waveHeight: 20,
-                    waveSpeed: 0.5,
-                    zoom: 0.8
-                });
-            } else {
-                vantaEffect = VANTA.NET({
-                    el: "#vanta-globe",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x4f46e5,
-                    backgroundColor: 0x111827,
-                    points: 12.00,
-                    maxDistance: 22.00,
-                    spacing: 18.00
-                });
+            try {
+                if (isMobile) {
+                    vantaEffect = VANTA.WAVES({
+                        el: "#vanta-bg",
+                        mouseControls: false,
+                        touchControls: false,
+                        gyroControls: false,
+                        minHeight: 200, minWidth: 200,
+                        scale: 1, scaleMobile: 1,
+                        color: 0x4338ca,
+                        shininess: 30,
+                        waveHeight: 12,
+                        waveSpeed: 0.35,
+                        zoom: 0.85
+                    });
+                } else {
+                    vantaEffect = VANTA.NET({
+                        el: "#vanta-bg",
+                        mouseControls: true,
+                        touchControls: true,
+                        gyroControls: false,
+                        minHeight: 200, minWidth: 200,
+                        scale: 1, scaleMobile: 1,
+                        color: 0x6366f1,
+                        backgroundColor: 0x111827,
+                        points: 12,
+                        maxDistance: 22,
+                        spacing: 18
+                    });
+                }
+            } catch (e) {
+                console.warn('[Vanta] Init error:', e);
             }
         }
 
         window.addEventListener('resize', function () {
             const newIsMobile = window.innerWidth < 768;
-            if (newIsMobile !== isMobile) {
-                isMobile = newIsMobile;
-                initVanta();
-            }
+            if (newIsMobile !== isMobile) { isMobile = newIsMobile; initVanta(); }
         });
 
-        // Initialize AOS and Feather Icons
+        // ==================== On DOM Ready ====================
         document.addEventListener('DOMContentLoaded', function () {
+            // Vanta
             initVanta();
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true
-            });
+
+            // AOS
+            AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+
+            // Feather Icons
             feather.replace();
 
-            // Mobile menu toggle
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const mobileMenu = document.createElement('div');
-            mobileMenu.className = 'md:hidden hidden absolute top-16 left-0 right-0 bg-gray-900 z-50';
-            mobileMenu.innerHTML = `
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:text-indigo-400">Home</a>
-                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:text-indigo-400">About</a>
-                    <a href="#work" class="block px-3 py-2 rounded-md text-base font-medium hover:text-indigo-400">Work</a>
-                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:text-indigo-400">Contact</a>
-                </div>
-            `;
-            document.body.appendChild(mobileMenu);
+            // ---- Mobile Menu ----
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
 
-            mobileMenuButton.addEventListener('click', function () {
-                const isHidden = mobileMenu.classList.contains('hidden');
-                if (isHidden) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('block');
+            function openMenu() {
+                mobileMenu.classList.add('open');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                feather.replace();
+            }
+            function closeMenu() {
+                mobileMenu.classList.remove('open');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // ---- Navbar background on scroll ----
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 30) {
+                    navbar.classList.add('shadow-lg', 'border-gray-800');
+                    if (window.innerWidth >= 768) {
+                        navbar.classList.add('bg-gray-900/95');
+                        navbar.classList.remove('bg-gray-900/80');
+                    }
                 } else {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('block');
+                    if (window.innerWidth >= 768) {
+                        navbar.classList.remove('bg-gray-900/95', 'shadow-lg');
+                        navbar.classList.add('bg-gray-900/80');
+                    }
                 }
             });
         });
 
-        const form = document.getElementById('contactForm');
-        const formStatus = document.getElementById('form-status');
+        // ==================== View More Projects Toggle ====================
+        let projectsExpanded = false;
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // This stops the page from reloading
-            const formData = new FormData(form);
-            const submitButton = form.querySelector('button[type="submit"]');
+        function toggleProjects() {
+            const hiddenCards = document.querySelectorAll('.hidden-project');
+            const btnText = document.getElementById('view-more-text');
+            const btnIcon = document.getElementById('view-more-icon');
 
-            formStatus.textContent = 'Sending...';
-            submitButton.disabled = true;
+            projectsExpanded = !projectsExpanded;
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.result === 'success') {
-                        formStatus.textContent = 'Message sent successfully! Thank you.';
-                        formStatus.style.color = '#34d399'; // Green text
-                        form.reset();
-                    } else {
-                        throw new Error(data.error || 'Unknown error');
-                    }
+            hiddenCards.forEach(function (card) {
+                if (projectsExpanded) {
+                    card.classList.remove('hidden');
+                    // Re-trigger AOS animation
+                    AOS.refresh();
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            btnText.textContent = projectsExpanded ? 'Show Less' : 'View More Projects';
+            // Rotate chevron icon
+            btnIcon.style.transform = projectsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+            btnIcon.style.transition = 'transform 0.3s ease';
+
+            // Re-init feather icons for newly revealed cards
+            feather.replace();
+        }
+
+        // ==================== Contact Form Submission ====================
+        (function () {
+            const form = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                formStatus.textContent = 'Sending message...';
+                formStatus.style.color = '#a5b4fc';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.6';
+
+                const payload = {
+                    name: form.elements['name'] ? form.elements['name'].value : '',
+                    email: form.elements['email'] ? form.elements['email'].value : '',
+                    subject: form.elements['subject'] ? form.elements['subject'].value : '',
+                    message: form.elements['message'] ? form.elements['message'].value : '',
+                    _subject: form.elements['subject'] && form.elements['subject'].value
+                        ? 'Portfolio: ' + form.elements['subject'].value
+                        : 'New Portfolio Contact Message'
+                };
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
                 })
-                .catch(error => {
-                    formStatus.textContent = 'An error occurred. Please try again.';
-                    formStatus.style.color = '#f87171'; // Red text
-                    console.error('Error:', error);
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                });
-        });
+                    .then(function (response) { return response.json(); })
+                    .then(function (data) {
+                        if (data.success === 'true' || data.success === true) {
+                            formStatus.textContent = '✅ Message sent successfully! Thank you.';
+                            formStatus.style.color = '#34d399';
+                            form.reset();
+                        } else if (data.message && data.message.includes('Activation')) {
+                            formStatus.textContent = '📧 Activation email sent to your inbox. Please click activate in your email!';
+                            formStatus.style.color = '#f59e0b';
+                        } else {
+                            throw new Error(data.message || 'Submission failed');
+                        }
+                    })
+                    .catch(function (error) {
+                        formStatus.textContent = '❌ An error occurred. Please try again.';
+                        formStatus.style.color = '#f87171';
+                        console.error('Form error:', error);
+                    })
+                    .finally(function () {
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                    });
+            });
+        })();
     </script>
 </body>
 
-
 </html>
-
-
